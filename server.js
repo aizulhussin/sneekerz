@@ -1,12 +1,18 @@
 var restify = require('restify');
+var fetch = require('node-fetch')
 
 function authenticate(req, res, next) {
     res.send('hello ' + req.params.name);
     next();
 }
 
+function getName(req,res,next){
+    fetch('http://www.google.com')
+}
+
 var server = restify.createServer();
 
+server.get("/getName",getName);
 server.post("/auth", function (req, resMain, next) {
     if (req.body.message && req.body.user && req.body.room) {
         var text = req.body.message;
