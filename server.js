@@ -6,13 +6,18 @@ function authenticate(req, res, next) {
     next();
 }
 
-function getName(req,res,next){
-    fetch('http://www.google.com')
+function getName(req, res, next) {
+    //fetch('http://www.google.com')
+    try {
+        console.log("entering try block");
+        throw "thrown message";
+        console.log("this message is never seen");
+    }
 }
 
 var server = restify.createServer();
 
-server.get("/getName",getName);
+server.get("/getName", getName);
 server.post("/auth", function (req, resMain, next) {
     if (req.body.message && req.body.user && req.body.room) {
         var text = req.body.message;
