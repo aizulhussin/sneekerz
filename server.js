@@ -25,7 +25,15 @@ server.post("/auth", function (req, resMain, next) {
         var password = req.body.password;
         console.log(user + ": " + text);
 
-        if (user === 'ADMIN' && password === "digi123") {
+        let hcUser = "ADMIN";
+
+        //undeclared variable test
+        console.log("Username is "+user);
+
+        //double variable declaration
+        let hcUser = "KREE";
+
+        if (user === hcUser && password === "digi123") {
             resMain.send({ response: "USER OK" });
         } else {
             resMain.send({ response: "USER INVALID" });
